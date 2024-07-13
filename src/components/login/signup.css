@@ -1,0 +1,99 @@
+.container {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  display: flex ;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0px;
+
+}
+
+.signup-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 70%;
+  height: 80%;
+  max-width: 500px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-container .signup-header {
+  margin-bottom: 1.5rem;
+}
+
+.signup-container .signup-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.signup-container .signup-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* flex-wrap: wrap; */
+  justify-content:center;
+  align-items: center;
+}
+
+.signup-container .signup-form .form-group {
+  width: 100%;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.signup-container .signup-form .form-group.full-width {
+  width: 100%;
+}
+
+.signup-container .signup-form .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.signup-container .signup-form .form-group input,
+.signup-container .signup-form .form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.signup-container .signup-form .form-group input[type="file"] {
+  padding: 0.3rem;
+}
+
+.signup-container .signup-form .btn {
+  background: #2575fc;
+  color: #fff;
+  font-size: 15px;
+  border: none;
+  width: 200px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.signup-container .signup-form .btn:hover {
+  background: #1b5bbf;
+}
+
+.signup-container .alert-danger {
+  color: #d9534f;
+  background: #f2dede;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ebccd1;
+  border-radius: 5px;
+}
