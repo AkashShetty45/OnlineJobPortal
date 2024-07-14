@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./index.css";
+import "./Navbar.css";
 
 const Navbar = () => {
   return (
@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="main-page">
         <nav id="navbar">
           <h1 className="logo">
-          Job<span> Portal</span>
+            Job<span>Portal</span>
           </h1>
 
           <ul>
@@ -17,6 +17,9 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/jobs">Jobs</Link>
+            </li>
+            <li>
+              <Link to="/post-job">Post a Job</Link> {/* Added link to PostJob */}
             </li>
             <li>
               <Link to="/login">Login/Sign up</Link>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './index.css';
+import './ApplyJobs.css';
 import { useNavigate } from 'react-router-dom';
 
 const ApplyJobs = () => {

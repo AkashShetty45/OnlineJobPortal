@@ -1,8 +1,7 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Navbar from "../Navbar";
-import "./index.css";
 import { useNavigate } from "react-router-dom";
+import "./PostJob.css";
 
 const PostJob = () => {
   const [company, setCompany] = useState("");
@@ -13,15 +12,17 @@ const PostJob = () => {
   const [role, setRole] = useState("");
   const [location, setLocation] = useState("");
 
-const navigate=useNavigate();
+  const navigate = useNavigate();
+
   const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = () => resolve(reader.result);
-      reader.onabort = (error) => reject(error);
+      reader.onerror = (error) => reject(error);
       reader.readAsDataURL(file);
     });
   };
+
   const handleImg = (e) => {
     const file = e.target.files[0];
     getBase64(file).then((base64) => {
@@ -31,37 +32,39 @@ const navigate=useNavigate();
   };
 
   const handleSubmitButton = (e) => {
-      const jobPost = {
-        company,
-        position,
-        salary,
-        experience,
-        role,
-        location,
-        logo
-      };
     e.preventDefault();
+    const jobPost = {
+      company,
+      position,
+      salary,
+      experience,
+      role,
+      location,
+      logo,
+    };
+
     if (company === "") {
-      window.alert("Enter name");
+      window.alert("Enter company name");
     } else if (position === "") {
       window.alert("Enter position");
     } else if (experience === "") {
-      window.alert("Enter Experience");
-    } else if (salary === "") window.alert("Enter Salary");
-    else {
+      window.alert("Enter experience");
+    } else if (salary === "") {
+      window.alert("Enter salary");
+    } else {
       let savedItem = [];
       if (localStorage.getItem("item")) {
         savedItem = JSON.parse(localStorage.getItem("item"));
       }
-      localStorage.setItem("item", JSON.stringify([...savedItem, {jobPost}]));
+      localStorage.setItem("item", JSON.stringify([...savedItem, jobPost]));
       window.alert("Form Submitted Successfully");
-      navigate("/Jobs");
+      navigate("/jobs");
     }
   };
+
   return (
     <div>
       <Navbar />
-
       <div className="job-background">
         <div className="title">
           <h2>Post a Job</h2>
@@ -69,7 +72,7 @@ const navigate=useNavigate();
       </div>
       <div className="container">
         <header className="header">
-          <h1 className="post-job">Fill the form </h1>
+          <h1 className="post-job">Fill the form</h1>
         </header>
         <form>
           <div className="form-group">
@@ -86,12 +89,12 @@ const navigate=useNavigate();
             />
           </div>
           <div className="form-group">
-            <label id="name-label" htmlFor="name">
+            <label id="location-label" htmlFor="location">
               Enter Job Location
             </label>
             <input
               type="text"
-              name="name"
+              name="location"
               className="form-control"
               placeholder="Enter Job Location"
               onChange={(e) => setLocation(e.target.value)}
@@ -100,12 +103,12 @@ const navigate=useNavigate();
           </div>
           <div className="form-group">
             <label id="logo-label" htmlFor="logo">
-              Company logo
+              Company Logo
             </label>
             <label>
               <input
                 type="file"
-                id="myFile"
+                id="logo"
                 name="filename"
                 onChange={handleImg}
                 required
@@ -115,8 +118,8 @@ const navigate=useNavigate();
           <div className="form-group">
             <label>What position are you posting for?</label>
             <select
-              id="dropdown"
-              name="role"
+              id="position"
+              name="position"
               className="form-control"
               onChange={(e) => setPosition(e.target.value)}
               required
@@ -127,24 +130,23 @@ const navigate=useNavigate();
               <option>Frontend</option>
               <option>Backend</option>
               <option>Full Stack</option>
-              <option>Devops</option>
+              <option>DevOps</option>
               <option>Digital Marketing</option>
             </select>
           </div>
           <div className="form-group">
-            <label id="name-label" htmlFor="name">
+            <label id="role-label" htmlFor="role">
               Enter Job Role
             </label>
             <input
               type="text"
-              name="name"
+              name="role"
               className="form-control"
               placeholder="Enter Job Role"
               onChange={(e) => setRole(e.target.value)}
               required
             />
           </div>
-
           <div
             className="form-group"
             onChange={(e) => setExperience(e.target.value)}
@@ -152,7 +154,7 @@ const navigate=useNavigate();
             <label>Experience </label>
             <label>
               <input
-                name="user-recommend"
+                name="experience"
                 value="0-1 Year"
                 type="radio"
                 className="input-radio"
@@ -161,8 +163,8 @@ const navigate=useNavigate();
             </label>
             <label>
               <input
-                name="user-recommend"
-                value=" 2-3 Years"
+                name="experience"
+                value="2-3 Years"
                 type="radio"
                 className="input-radio"
               />
@@ -170,8 +172,8 @@ const navigate=useNavigate();
             </label>
             <label>
               <input
-                name="user-recommend"
-                value=" 4-5 Years"
+                name="experience"
+                value="4-5 Years"
                 type="radio"
                 className="input-radio"
               />
@@ -179,7 +181,7 @@ const navigate=useNavigate();
             </label>
             <label>
               <input
-                name="user-recommend"
+                name="experience"
                 value="5+ Years"
                 type="radio"
                 className="input-radio"
@@ -187,7 +189,6 @@ const navigate=useNavigate();
               5+ Years
             </label>
           </div>
-
           <div className="form-group">
             <label>Salary</label>
             <select
@@ -206,7 +207,11 @@ const navigate=useNavigate();
             </select>
           </div>
           <div className="form-group">
-            <button type="submit" className="submit-button" onClick={handleSubmitButton}>
+            <button
+              type="submit"
+              className="submit-button"
+              onClick={handleSubmitButton}
+            >
               Submit
             </button>
           </div>

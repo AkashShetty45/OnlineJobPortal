@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./index.css";
+import "./Filter.css";
 const experience = [
   { min: 0, max: 1 },
   { min: 2, max: 3 },

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar";
 import { Link } from "react-router-dom";
-import "./index.css";
-import Job from "./../../Assets/jobs.json";
+import "./Jobs.css";
+import Job from "../../Assets/jobs.json";
 import Filter from "../Filter";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
@@ -18,6 +18,7 @@ const Jobs = () => {
   const [filteredJobs, setFilteredJobs] = useState([...JobData, ...Job]);
   const [searchterm, setSearchTerm] = useState("");
   const [active, setActive] = useState(false);
+
   function handleJobFilter(event) {
     const value = event.target.innerText;
     event.preventDefault();
@@ -27,6 +28,7 @@ const Jobs = () => {
       })
     );
   }
+
   function saveClick(id, logo, company, position, location, posted) {
     window.localStorage.setItem(
       "Job",
@@ -34,6 +36,7 @@ const Jobs = () => {
     );
     console.log(JobData);
   }
+
   const searchEvent = (event) => {
     const data = event.target.value;
     setSearchTerm(data);
@@ -53,6 +56,7 @@ const Jobs = () => {
       setFilteredJobs(Job);
     }
   };
+
   function handleExperienceFilter(checkedState) {
     let filters = [];
     checkedState.forEach((item, index) => {
@@ -68,6 +72,7 @@ const Jobs = () => {
       setFilteredJobs(filters);
     });
   }
+
   return (
     <>
       <Navbar />
@@ -105,7 +110,7 @@ const Jobs = () => {
                       </div>
                       <div className="job-button">
                         <div className="job-posting">
-                          <Link to="/apply-jobs">Apply Now</Link>
+                          <Link to="/apply-jobs">Apply Now</Link> {/* Link to ApplyJobs */}
                         </div>
                         <div className="save-button">
                           <Link
